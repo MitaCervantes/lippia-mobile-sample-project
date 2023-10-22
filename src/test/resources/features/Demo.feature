@@ -1,23 +1,16 @@
 @Demo
 Feature: As a potential client i want to interact with the mobile application
 
-  @Register
-  Scenario Outline: The user starts the application, registers a new user.
+  @Login
+  Scenario Outline: The user starts the application, log in to the app.
     Given The app is loaded correctly
-    When The user goes to the Sign Up page
-    And The user registers a new user with: <username>, <email>, <password>
+    When The user logs in the application with: <email>, <password>
     Then Home page is displayed
-
 
     Examples:
-      | username   | email                | password |
-      | automation | automation@gmail.com | 123456   |
+      | email                            | password    |
+      | cervantes.mariana.6017@gmail.com | MitaCerv#21 |
 
-  @Login
-  Scenario: The user starts the application, log in to the app.
-    Given The app is loaded correctly
-    When The user logs in the application with: automation@gmail.com, 123456
-    Then Home page is displayed
 
   @ChangeLanguage
   Scenario: The user starts the application, log in to the app, changes the language and log out of the app and .
