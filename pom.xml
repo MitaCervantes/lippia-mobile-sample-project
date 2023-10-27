@@ -19,14 +19,14 @@
         <cucumber.runner>testngParallel.xml</cucumber.runner>
         <crowdar.driverHub></crowdar.driverHub>
         <crowdar.cucumber.option>src/test/resources/features --glue com/crowdar --glue com/crowdar/bdd/cukes  --tags ${crowdar.cucumber.filter} --tags 'not @Ignore' --plugin com.crowdar.examples.report.Reporter: --plugin pretty</crowdar.cucumber.option>
-        <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/androidCapabilities.json</crowdar.projectType.driverCapabilities.jsonFile>
+
         <crowdar.remoteDriverType></crowdar.remoteDriverType>
         <crowdar.reporter.avent>true</crowdar.reporter.avent>
     </properties>
 
     <profiles>
         <profile>
-            <id>Local</id>
+            <id>Emulado</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -36,6 +36,19 @@
                 <crowdar.avd>Pixel3</crowdar.avd>
                 <crowdar.appLocation>D:\\\\Mita\\\\clockify.apk</crowdar.appLocation>
                 <crowdar.deviceName>Pixel3</crowdar.deviceName>
+                <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/emuladoCapabilities.json</crowdar.projectType.driverCapabilities.jsonFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>Fisico</id>
+            <activation>
+            </activation>
+            <properties>
+                <crowdar.driverHub>http://127.0.0.1:4723/wd/hub</crowdar.driverHub>
+                <cucumber.runner>testng.xml</cucumber.runner>
+                <crowdar.appLocation>D:\\\\Mita\\\\clockify.apk</crowdar.appLocation>
+                <crowdar.deviceName>Galaxy A03s</crowdar.deviceName>
+                <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/fisicoCapabilities.json</crowdar.projectType.driverCapabilities.jsonFile>
             </properties>
         </profile>
         <profile>

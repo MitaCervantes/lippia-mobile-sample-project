@@ -11,15 +11,16 @@ Feature: As a potential client i want to interact with the mobile application
       | email                            | password    |
       | cervantes.mariana.6017@gmail.com | MitaCerv#21 |
 
+  @EntryData
+  Scenario: Add entry data
+    Given The logged-in user is in the time entry section
+    When click button add an entry
+    And enter the hours worked: "16":"30"
+    And click button save
+    Then redirect to the time entry section
+    And the created entry appears
+    And After test: delete entry
 
-  @ChangeLanguage
-  Scenario: The user starts the application, log in to the app, changes the language and log out of the app and .
-    Given The app is loaded correctly
-    When The user logs in the application with: automation@gmail.com, 123456
-    Then Home page is displayed
 
-    When The user changes the language
-    And The user log out of the app
-    Then Login page is displayed
 
 
