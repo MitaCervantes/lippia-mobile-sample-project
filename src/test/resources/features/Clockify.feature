@@ -19,7 +19,7 @@ Feature: As a potential client i want to interact with the mobile application
     And click button save
     Then redirect to the time entry section
     And the created entry appears
-    And After test: delete entry
+
 
 
 

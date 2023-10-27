@@ -26,17 +26,11 @@ public class HomeSteps extends PageSteps {
         HomeService.isViewLoaded();
     }
 
-    @When("The user log out of the app")
-    public void doSignOut() {
-        MobileActionManager.click(HomeConstants.SIGN_OUT_BUTTON);
-    }
-
     @When("The logged-in user is in the time entry section")
     public void theLoggedInUserIsInTheTimeEntrySection() {
         LoginService.doLogin(email, password);
         HomeService.isViewLoaded();
     }
-
     @When("click button add an entry")
     public void clickButtonAddAnEntry() {
         HomeService.clickEntry();
@@ -56,14 +50,9 @@ public class HomeSteps extends PageSteps {
     public void redirectToTheTimeEntrySection() {
         HomeService.isTitleEntryLoaded();
     }
-
     @And("the created entry appears")
     public void theCreatedEntryAppears() {
         HomeService.isEntryLoaded();
     }
 
-    @And("After test: delete entry")
-    public void afterTestDeleteEntry() {
-        HomeService.deleteEntry();
-    }
 }

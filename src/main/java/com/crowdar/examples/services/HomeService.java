@@ -2,10 +2,16 @@ package com.crowdar.examples.services;
 
 import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.examples.constants.HomeConstants;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * This class contains the business logic.
@@ -22,7 +28,6 @@ public class HomeService {
     public static void clickEntry(){
         MobileActionManager.click(HomeConstants.ACTION_BUTTON);
         MobileActionManager.waitVisibility(HomeConstants.DIV_SECTION_HOUR);
-
     }
 
     public static void inputHours(String hour, String minute) {
@@ -33,29 +38,14 @@ public class HomeService {
         MobileActionManager.click(HomeConstants.INPUT_MINUTE);
         MobileActionManager.setInput(HomeConstants.INPUT_MINUTE, minute);
         MobileActionManager.setInput(HomeConstants.INPUT_MINUTE, minute);
-
     }
     public static void isTitleEntryLoaded(){
         MobileActionManager.waitVisibility(HomeConstants.TITLE_TIME_ENTRY);
-
     }
 
     public static void isEntryLoaded(){
         Assert.assertTrue(MobileActionManager.isVisible(HomeConstants.ENTRY));
     }
 
-    public static void sleep(){
-        try {
-            MobileActionManager.getWait().until(ExpectedConditions.elementToBeClickable(By.id("id:empty_state_time_entries")));
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
-    }
-    public static void deleteEntry() {
-        MobileActionManager.click(HomeConstants.BUTTON_MENU_ENTRY);
-        MobileActionManager.click(HomeConstants.BUTTON_DELETE_ENTRY);
-        MobileActionManager.waitVisibility(HomeConstants.NO_ENTRY);
-        sleep();
-    }
 
 }
