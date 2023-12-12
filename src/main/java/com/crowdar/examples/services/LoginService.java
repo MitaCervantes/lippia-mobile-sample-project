@@ -1,8 +1,9 @@
 package com.crowdar.examples.services;
 
 import com.crowdar.core.actions.MobileActionManager;
-import com.crowdar.driver.DriverManager;
 import com.crowdar.examples.constants.LoginConstants;
+import com.crowdar.driver.DriverManager;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 /**
@@ -12,14 +13,29 @@ import org.testng.Assert;
  */
 public class LoginService {
 
-    public static void doLogin(String email, String password){
-        MobileActionManager.setInput(LoginConstants.EMAIL_INPUT_LOCATOR, email);
-        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT_LOCATOR, password);
-        MobileActionManager.click(LoginConstants.SIGN_IN_BUTTON_LOCATOR);
+    public static void doLogin(String password){
+        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT, password);
+        DriverManager.getDriverInstance().getKeyboard().sendKeys(Keys.ENTER);
+
     }
 
-    public static void isViewLoaded(){
-        MobileActionManager.waitVisibility(LoginConstants.SIGN_IN_BUTTON_LOCATOR);
-        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.EMAIL_INPUT_LOCATOR), LoginConstants.VIEW_NOT_DISPLAYED_MESSAGE);
+    public static void goTella(){
+        MobileActionManager.waitVisibility(LoginConstants.START_BUTTON);
+        MobileActionManager.click(LoginConstants.START_BUTTON);
+    }
+
+    public static void isViewLoaded(String password){
+        MobileActionManager.waitVisibility(LoginConstants.START_BUTTON);
+        MobileActionManager.click(LoginConstants.START_BUTTON);
+        for (int i = 0; i < 3; i++) {
+            MobileActionManager.click(LoginConstants.NEXT_BUTTON);
+        }
+        MobileActionManager.click(LoginConstants.LOCK_PASSWORD_BUTTON);
+        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT, password);
+        MobileActionManager.click(LoginConstants.PASSWORD_RIGHT_BUTTON);
+        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT, password);
+        MobileActionManager.click(LoginConstants.PASSWORD_RIGHT_BUTTON);
+        MobileActionManager.click(LoginConstants.NEXT_BUTTON);
+        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.START_BUTTON), LoginConstants.VIEW_NOT_DISPLAYED_MESSAGE);
     }
 }

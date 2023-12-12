@@ -17,18 +17,16 @@ import io.cucumber.java.en.Given;
  * Otherwise, if it is a simple action, like clicking a button and it has nothing related to business logic, is correct to put here.
  */
 public class HomeSteps extends PageSteps {
-
-    private final String email = PropertyManager.getProperty("email");
     private final String password = PropertyManager.getProperty("password");
 
     @Then("Home page is displayed")
     public void isHomePageVisible() {
-        HomeService.isViewLoaded();
+        HomeService.isHomeLoaded();
     }
 
     @When("The logged-in user is in the time entry section")
     public void theLoggedInUserIsInTheTimeEntrySection() {
-        LoginService.doLogin(email, password);
+        LoginService.doLogin(password);
         HomeService.isViewLoaded();
     }
     @When("click button add an entry")

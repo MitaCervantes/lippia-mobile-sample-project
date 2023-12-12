@@ -2,6 +2,7 @@ package com.crowdar.examples.services;
 
 import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.examples.constants.HomeConstants;
+import com.crowdar.examples.constants.LoginConstants;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
@@ -25,6 +26,12 @@ public class HomeService {
         Assert.assertTrue(MobileActionManager.isVisible(HomeConstants.ACTION_BUTTON), HomeConstants.VIEW_NOT_DISPLAYED_MESSAGE);
     }
 
+    public static void isHomeLoaded() {
+        MobileActionManager.waitVisibility(LoginConstants.HOME_BUTTON);
+        MobileActionManager.waitVisibility(LoginConstants.CAMERA_BUTTON);
+        MobileActionManager.waitVisibility(LoginConstants.CAMERA_BUTTON);
+        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.HOME_BUTTON), HomeConstants.VIEW_NOT_DISPLAYED_MESSAGE);
+    }
     public static void clickEntry(){
         MobileActionManager.click(HomeConstants.ACTION_BUTTON);
         MobileActionManager.waitVisibility(HomeConstants.DIV_SECTION_HOUR);
